@@ -1,748 +1,440 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Legends - Loja Gamer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vendix - Minha Loja</title>
 
-```
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-    }
-
-    body {
-        background: #080b14;
-        color: white;
-    }
-
-    header {
-        background: #101522;
-        padding: 20px 7%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        border-bottom: 1px solid #252d40;
-    }
-
-    .logo {
-        font-size: 25px;
-        font-weight: bold;
-        color: #00e5ff;
-    }
-
-    nav a {
-        color: white;
-        text-decoration: none;
-        margin-left: 25px;
-        transition: 0.3s;
-    }
-
-    nav a:hover {
-        color: #00e5ff;
-    }
-
-    .cart {
-        cursor: pointer;
-        background: #00e5ff;
-        color: #061018;
-        padding: 10px 15px;
-        border-radius: 10px;
-        font-weight: bold;
-    }
-
-    .hero {
-        min-height: 500px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 60px 20px;
-        background:
-            radial-gradient(circle at center, #12304a, #080b14 65%);
-    }
-
-    .hero h1 {
-        font-size: 50px;
-        margin-bottom: 20px;
-    }
-
-    .hero h1 span {
-        color: #00e5ff;
-    }
-
-    .hero p {
-        color: #b8c0d4;
-        font-size: 18px;
-        max-width: 650px;
-        margin: auto;
-        line-height: 1.6;
-    }
-
-    .buttons {
-        margin-top: 30px;
-    }
-
-    .btn {
-        display: inline-block;
-        padding: 14px 25px;
-        margin: 5px;
-        border-radius: 10px;
-        text-decoration: none;
-        font-weight: bold;
-        cursor: pointer;
-        border: none;
-    }
-
-    .primary {
-        background: #00e5ff;
-        color: #061018;
-    }
-
-    .secondary {
-        background: transparent;
-        color: white;
-        border: 1px solid #00e5ff;
-    }
-
-    section {
-        padding: 70px 7%;
-    }
-
-    .section-title {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
-    .section-title h2 {
-        font-size: 35px;
-        margin-bottom: 10px;
-    }
-
-    .section-title p {
-        color: #929bb0;
-    }
-
-    .filters {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 35px;
-    }
-
-    .filter {
-        background: #151b29;
-        color: white;
-        border: 1px solid #293247;
-        padding: 10px 18px;
-        border-radius: 8px;
-        cursor: pointer;
-    }
-
-    .filter:hover {
-        border-color: #00e5ff;
-    }
-
-    .pets {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 25px;
-    }
-
-    .pet {
-        background: #111725;
-        border: 1px solid #242e43;
-        border-radius: 15px;
-        padding: 20px;
-        text-align: center;
-        transition: 0.3s;
-    }
-
-    .pet:hover {
-        transform: translateY(-7px);
-        border-color: #00e5ff;
-        box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
-    }
-
-    .pet-img {
-        width: 130px;
-        height: 130px;
-        margin: 0 auto 15px;
-        border-radius: 15px;
-        background: #1a2233;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 65px;
-    }
-
-    .pet h3 {
-        margin-bottom: 8px;
-    }
-
-    .rarity {
-        color: #00e5ff;
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
-
-    .benefit {
-        color: #aeb6c8;
-        margin-bottom: 15px;
-    }
-
-    .price {
-        font-size: 22px;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-
-    .buy {
-        width: 100%;
-        background: #00e5ff;
-        border: none;
-        padding: 12px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-    }
-
-    .buy:hover {
-        opacity: 0.85;
-    }
-
-    .how {
-        background: #0d111c;
-    }
-
-    .steps {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 25px;
-        text-align: center;
-    }
-
-    .step {
-        background: #151b29;
-        padding: 30px;
-        border-radius: 15px;
-    }
-
-    .step-number {
-        font-size: 35px;
-        color: #00e5ff;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-
-    footer {
-        background: #060810;
-        padding: 30px;
-        text-align: center;
-        color: #777f91;
-    }
-
-    /* CHATBOT */
-
-    .chat-button {
-        position: fixed;
-        right: 25px;
-        bottom: 25px;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        border: none;
-        background: #00e5ff;
-        font-size: 25px;
-        cursor: pointer;
-        z-index: 200;
-    }
-
-    .chat {
-        position: fixed;
-        right: 25px;
-        bottom: 95px;
-        width: 320px;
-        background: #111725;
-        border: 1px solid #293247;
-        border-radius: 15px;
-        overflow: hidden;
-        display: none;
-        z-index: 200;
-    }
-
-    .chat-header {
-        background: #00e5ff;
-        color: #061018;
-        padding: 15px;
-        font-weight: bold;
-    }
-
-    .chat-body {
-        height: 260px;
-        padding: 15px;
-        overflow-y: auto;
-    }
-
-    .message {
-        background: #1b2435;
-        padding: 10px;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
-
-    .chat-input {
-        display: flex;
-        border-top: 1px solid #293247;
-    }
-
-    .chat-input input {
-        flex: 1;
-        background: #0d111c;
-        border: none;
-        padding: 12px;
-        color: white;
-        outline: none;
-    }
-
-    .chat-input button {
-        background: #00e5ff;
-        border: none;
-        padding: 12px;
-        cursor: pointer;
-    }
-
-    /* CARRINHO */
-
-    .cart-panel {
-        position: fixed;
-        right: -400px;
-        top: 0;
-        width: 360px;
-        height: 100%;
-        background: #111725;
-        z-index: 300;
-        padding: 25px;
-        transition: 0.3s;
-        box-shadow: -5px 0 20px rgba(0,0,0,0.4);
-    }
-
-    .cart-panel.active {
-        right: 0;
-    }
-
-    .cart-panel h2 {
-        margin-bottom: 25px;
-    }
-
-    .cart-item {
-        display: flex;
-        justify-content: space-between;
-        padding: 12px 0;
-        border-bottom: 1px solid #293247;
-    }
-
-    .close {
-        float: right;
-        cursor: pointer;
-        font-size: 20px;
-    }
-
-    .total {
-        margin-top: 25px;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    @media(max-width: 700px) {
-        nav {
-            display: none;
-        }
-
-        .hero h1 {
-            font-size: 35px;
-        }
-
-        .chat {
-            right: 10px;
-            width: calc(100% - 20px);
-        }
-
-        .cart-panel {
-            width: 100%;
-        }
-    }
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f5f9;color:#222}
+header{background:#6c3cff;color:white;padding:20px;text-align:center}
+header h1{margin:0}
+nav{display:flex;justify-content:center;gap:10px;padding:15px;flex-wrap:wrap}
+button{border:0;padding:11px 15px;border-radius:8px;cursor:pointer;font-weight:bold}
+.primary{background:#6c3cff;color:white}
+.danger{background:#ffe5e5;color:#b00020}
+section{max-width:1100px;margin:20px auto;padding:20px}
+.panel{background:white;padding:20px;border-radius:12px;margin-bottom:20px}
+input,textarea,select{width:100%;padding:12px;margin:7px 0 14px;border:1px solid #ddd;border-radius:8px;font:inherit}
+textarea{resize:vertical}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.product{background:white;border-radius:12px;padding:14px;box-shadow:0 2px 8px #0001}
+.product img{width:100%;height:180px;object-fit:cover;border-radius:8px}
+.product h3{margin-bottom:5px}
+.price{font-size:21px;font-weight:bold;color:#6c3cff}
+#photoPreview{display:none;width:180px;height:180px;object-fit:cover;border-radius:10px;margin:5px 0 12px;border:1px solid #ddd}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.hidden{display:none}
+small{color:#666}
+footer{text-align:center;padding:25px;color:#666}
 </style>
-```
-
 </head>
 
 <body>
 
 <header>
-    <div class="logo">🐾 PET LEGENDS</div>
-
-```
-<nav>
-    <a href="#inicio">Início</a>
-    <a href="#pets">Pets</a>
-    <a href="#como">Como Comprar</a>
-</nav>
-
-<div class="cart" onclick="abrirCarrinho()">
-    🛒 Carrinho (<span id="contador">0</span>)
-</div>
-```
-
+<h1>Vendix</h1>
+<p>Sua loja online em um só lugar</p>
 </header>
 
-<section class="hero" id="inicio">
-    <div>
-        <h1>Encontre os melhores <span>Pets!</span></h1>
+<nav>
+<button class="primary" onclick="showPage('loja')">🛍️ Loja</button>
+<button class="primary" onclick="showPage('carrinho')">🛒 Carrinho (<span id="cartCount">0</span>)</button>
+<button class="primary" onclick="showPage('admin')">⚙️ Administrar produtos</button>
+</nav>
 
-```
-    <p>
-        Escolha seus pets favoritos e encontre opções para deixar
-        sua experiência no jogo ainda mais divertida.
-    </p>
-
-    <div class="buttons">
-        <a href="#pets" class="btn primary">Ver Pets</a>
-        <a href="#como" class="btn secondary">Como Comprar</a>
-    </div>
-</div>
-```
-
+<section id="loja">
+<h2>Produtos disponíveis</h2>
+<div id="products" class="grid"></div>
 </section>
 
-<section id="pets">
-
-```
-<div class="section-title">
-    <h2>🐾 Catálogo de Pets</h2>
-    <p>Escolha uma opção abaixo</p>
+<section id="carrinho" class="hidden">
+<div class="panel">
+<h2>🛒 Meu carrinho</h2>
+<div id="cartItems"></div>
+<h3 id="cartTotal">Total: R$ 0,00</h3>
+<label>Seu nome</label>
+<input id="customerName" placeholder="Digite seu nome">
+<label>Endereço para entrega</label>
+<input id="customerAddress" placeholder="Digite seu endereço">
+<label>Observações do pedido</label>
+<textarea id="customerNotes" placeholder="Alguma observação?"></textarea>
+<button class="primary" onclick="checkout()">Finalizar pelo WhatsApp</button>
 </div>
-
-<div class="filters">
-    <button class="filter" onclick="filtrar('todos')">Todos</button>
-    <button class="filter" onclick="filtrar('comum')">Comum</button>
-    <button class="filter" onclick="filtrar('raro')">Raro</button>
-    <button class="filter" onclick="filtrar('epico')">Épico</button>
-    <button class="filter" onclick="filtrar('lendario')">Lendário</button>
-</div>
-
-<div class="pets" id="listaPets">
-
-    <div class="pet" data-rarity="comum">
-        <div class="pet-img">🐶</div>
-        <h3>Pet Comum</h3>
-        <div class="rarity">Comum</div>
-        <div class="benefit">Multiplicador: 1x</div>
-        <div class="price">R$ 1,00</div>
-        <button class="buy" onclick="adicionar('Pet Comum', 1)">
-            Comprar
-        </button>
-    </div>
-
-    <div class="pet" data-rarity="raro">
-        <div class="pet-img">🐱</div>
-        <h3>Pet Raro</h3>
-        <div class="rarity">Raro</div>
-        <div class="benefit">Multiplicador: 2x</div>
-        <div class="price">R$ 10,00</div>
-        <button class="buy" onclick="adicionar('Pet Raro', 10)">
-            Comprar
-        </button>
-    </div>
-
-    <div class="pet" data-rarity="epico">
-        <div class="pet-img">🐲</div>
-        <h3>Pet Épico</h3>
-        <div class="rarity">Épico</div>
-        <div class="benefit">Multiplicador: 5x</div>
-        <div class="price">R$ 20,00</div>
-        <button class="buy" onclick="adicionar('Pet Épico', 20)">
-            Comprar
-        </button>
-    </div>
-
-    <div class="pet" data-rarity="lendario">
-        <div class="pet-img">🐉</div>
-        <h3>Pet Lendário</h3>
-        <div class="rarity">Lendário</div>
-        <div class="benefit">Multiplicador: 10x</div>
-        <div class="price">R$ 35,00</div>
-        <button class="buy" onclick="adicionar('Pet Lendário', 35)">
-            Comprar
-        </button>
-    </div>
-
-</div>
-```
-
 </section>
 
-<section class="how" id="como">
+<section id="admin" class="hidden">
+<div class="panel">
+<h2 id="formTitle">Cadastrar produto</h2>
 
-```
-<div class="section-title">
-    <h2>🛒 Como Comprar</h2>
-    <p>É simples e rápido</p>
+<label>Nome do produto</label>
+<input id="name" placeholder="Nome do produto">
+
+<label>Descrição</label>
+<textarea id="desc" placeholder="Descrição do produto"></textarea>
+
+<label>Preço (R$)</label>
+<input id="price" type="number" min="0" step="0.01" placeholder="0,00">
+
+<label>Estoque</label>
+<input id="stock" type="number" min="0" step="1" placeholder="Quantidade disponível">
+
+<label>Categoria</label>
+<input id="category" placeholder="Ex.: Roupas, acessórios">
+
+<label>Foto do produto</label>
+<input id="photo" type="file" accept="image/jpeg,image/png,image/webp">
+
+<small>Formatos JPG, PNG ou WEBP. Máximo de 1,2 MB.</small>
+
+<div>
+<img id="photoPreview" alt="Prévia da foto">
 </div>
 
-<div class="steps">
-
-    <div class="step">
-        <div class="step-number">01</div>
-        <h3>Escolha</h3>
-        <p>Escolha o pet que deseja.</p>
-    </div>
-
-    <div class="step">
-        <div class="step-number">02</div>
-        <h3>Adicione</h3>
-        <p>Adicione o produto ao carrinho.</p>
-    </div>
-
-    <div class="step">
-        <div class="step-number">03</div>
-        <h3>Finalize</h3>
-        <p>Confira o pedido e prossiga para a compra.</p>
-    </div>
-
+<div class="actions">
+<button type="button" class="danger" onclick="removePhoto()">🗑️ Remover foto</button>
+<button type="button" onclick="clearForm()">Limpar formulário</button>
+<button type="button" class="primary" onclick="saveProduct()">Salvar produto</button>
 </div>
-```
+</div>
 
+<div class="panel">
+<h2>Produtos cadastrados</h2>
+<div id="adminProducts"></div>
+</div>
 </section>
 
-<footer>
-    <p>© 2026 Pet Legends — Loja independente.</p>
-    <p>Este site não é afiliado oficialmente ao Muscle Legends.</p>
-</footer>
-
-<!-- CHATBOT -->
-
-<button class="chat-button" onclick="abrirChat()">💬</button>
-
-<div class="chat" id="chat">
-
-```
-<div class="chat-header">
-    🤖 Assistente
-</div>
-
-<div class="chat-body" id="chatBody">
-
-    <div class="message">
-        Olá! 👋 Sou o Assistente. Posso ajudar você a encontrar um pet ou consultar preços.
-    </div>
-
-</div>
-
-<div class="chat-input">
-    <input
-        type="text"
-        id="chatInput"
-        placeholder="Digite sua dúvida..."
-        onkeydown="if(event.key==='Enter') enviarMensagem()"
-    >
-
-    <button onclick="enviarMensagem()">➤</button>
-</div>
-```
-
-</div>
-
-<!-- CARRINHO -->
-
-<div class="cart-panel" id="cartPanel">
-
-```
-<span class="close" onclick="fecharCarrinho()">✖</span>
-
-<h2>🛒 Seu Carrinho</h2>
-
-<div id="cartItems">
-    <p>Seu carrinho está vazio.</p>
-</div>
-
-<div class="total">
-    Total: R$ <span id="total">0.00</span>
-</div>
-
-<button class="btn primary" style="width:100%; margin-top:20px;" onclick="finalizar()">
-    Finalizar compra
-</button>
-```
-
-</div>
+<footer>Vendix © 2026 — Sua loja online</footer>
 
 <script>
+const $ = id => document.getElementById(id);
 
-    let carrinho = [];
+let products = JSON.parse(localStorage.getItem('vendix_products') || '[]');
+let cart = JSON.parse(localStorage.getItem('vendix_cart') || '[]');
 
-    function adicionar(nome, preco) {
+let editing = null;
+let photoData = '';
+let photoRemoved = false;
 
-        carrinho.push({
-            nome: nome,
-            preco: preco
-        });
+const WHATSAPP = ''; // Coloque o DDD e número da loja, somente números.
 
-        atualizarCarrinho();
+function money(value){
+  return Number(value || 0).toLocaleString('pt-BR',{
+    style:'currency',currency:'BRL'
+  });
+}
 
-        alert(nome + " foi adicionado ao carrinho!");
+function escapeHTML(value){
+  return String(value ?? '').replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;',
+    '"':'&quot;',"'":'&#39;'
+  })[c]);
+}
+
+function saveData(){
+  localStorage.setItem('vendix_products',JSON.stringify(products));
+  localStorage.setItem('vendix_cart',JSON.stringify(cart));
+}
+
+function showPage(page){
+  ['loja','carrinho','admin'].forEach(id=>{
+    $(id).classList.toggle('hidden',id!==page);
+  });
+
+  renderProducts();
+  renderCart();
+  renderAdmin();
+  window.scrollTo(0,0);
+}
+
+$('photo').addEventListener('change',function(e){
+  const file=e.target.files[0];
+  if(!file)return;
+
+  const allowed=['image/jpeg','image/png','image/webp'];
+
+  if(!allowed.includes(file.type)){
+    alert('Formato inválido! Escolha JPG, PNG ou WEBP.');
+    this.value='';
+    return;
+  }
+
+  if(file.size>1.2*1024*1024){
+    alert('A foto deve ter no máximo 1,2 MB.');
+    this.value='';
+    return;
+  }
+
+  const reader=new FileReader();
+
+  reader.onload=function(){
+    photoData=reader.result;
+    photoRemoved=false;
+    updatePreview(photoData);
+  };
+
+  reader.readAsDataURL(file);
+});
+
+function updatePreview(src){
+  const img=$('photoPreview');
+
+  if(src){
+    img.src=src;
+    img.style.display='block';
+  }else{
+    img.removeAttribute('src');
+    img.style.display='none';
+  }
+}
+
+function removePhoto(){
+  photoData='';
+  photoRemoved=true;
+  $('photo').value='';
+  updatePreview('');
+}
+
+function clearForm(){
+  editing=null;
+  photoData='';
+  photoRemoved=false;
+
+  ['name','desc','price','stock','category','photo'].forEach(id=>{
+    $(id).value='';
+  });
+
+  updatePreview('');
+  $('formTitle').textContent='Cadastrar produto';
+}
+
+function saveProduct(){
+  const name=$('name').value.trim();
+  const desc=$('desc').value.trim();
+  const price=Number($('price').value);
+  const stock=Number($('stock').value);
+  const category=$('category').value.trim();
+
+  if(!name){
+    alert('Digite o nome do produto.');
+    return;
+  }
+
+  if($('price').value==='' || !Number.isFinite(price) || price<0){
+    alert('Digite um preço válido.');
+    return;
+  }
+
+  if($('stock').value==='' || !Number.isInteger(stock) || stock<0){
+    alert('Digite uma quantidade válida para o estoque.');
+    return;
+  }
+
+  const old=products.find(p=>p.id===editing);
+
+  const product={
+    id:editing || Date.now(),
+    name,desc,price,stock,category,
+    photo:photoData || (photoRemoved ? '' : (old?.photo || ''))
+  };
+
+  if(editing){
+    products=products.map(p=>p.id===editing?product:p);
+  }else{
+    products.push(product);
+  }
+
+  saveData();
+  clearForm();
+  renderProducts();
+  renderAdmin();
+
+  alert('Produto salvo com sucesso!');
+}
+
+function editProduct(id){
+  const p=products.find(x=>x.id===id);
+  if(!p)return;
+
+  editing=id;
+  photoData=p.photo||'';
+  photoRemoved=false;
+
+  $('formTitle').textContent='Editar produto';
+  $('name').value=p.name;
+  $('desc').value=p.desc;
+  $('price').value=p.price;
+  $('stock').value=p.stock;
+  $('category').value=p.category;
+  $('photo').value='';
+
+  updatePreview(photoData);
+  showPage('admin');
+}
+
+function deleteProduct(id){
+  if(!confirm('Deseja excluir este produto?'))return;
+
+  products=products.filter(p=>p.id!==id);
+  cart=cart.filter(item=>item.id!==id);
+
+  saveData();
+  renderProducts();
+  renderAdmin();
+  renderCart();
+}
+
+function renderProducts(){
+  const available=products.filter(p=>p.stock>0);
+
+  $('products').innerHTML=available.length
+    ? available.map(p=>`
+      <article class="product">
+        ${p.photo?`<img src="${p.photo}" alt="${escapeHTML(p.name)}">`:''}
+        <h3>${escapeHTML(p.name)}</h3>
+        <p>${escapeHTML(p.desc)}</p>
+        <small>${escapeHTML(p.category)}</small>
+        <p class="price">${money(p.price)}</p>
+        <p>Estoque: ${p.stock}</p>
+        <button class="primary" onclick="addToCart(${p.id})">
+          Adicionar ao carrinho
+        </button>
+      </article>
+    `).join('')
+    : '<p>Nenhum produto disponível no momento.</p>';
+}
+
+function renderAdmin(){
+  $('adminProducts').innerHTML=products.length
+    ? products.map(p=>`
+      <div class="product" style="margin-bottom:12px">
+        <strong>${escapeHTML(p.name)}</strong>
+        <p>${money(p.price)} — Estoque: ${p.stock}</p>
+        <div class="actions">
+          <button class="primary" onclick="editProduct(${p.id})">Editar</button>
+          <button class="danger" onclick="deleteProduct(${p.id})">Excluir</button>
+        </div>
+      </div>
+    `).join('')
+    : '<p>Nenhum produto cadastrado.</p>';
+}
+
+function addToCart(id){
+  const p=products.find(x=>x.id===id);
+  if(!p || p.stock<=0)return;
+
+  const item=cart.find(x=>x.id===id);
+
+  if(item){
+    if(item.qty>=p.stock){
+      alert('Não há mais unidades disponíveis.');
+      return;
     }
+    item.qty++;
+  }else{
+    cart.push({id,qty:1});
+  }
 
+  saveData();
+  renderCart();
+  alert('Produto adicionado ao carrinho!');
+}
 
-    function atualizarCarrinho() {
+function changeQty(id,delta){
+  const item=cart.find(x=>x.id===id);
+  const p=products.find(x=>x.id===id);
+  if(!item || !p)return;
 
-        document.getElementById("contador").innerText = carrinho.length;
+  const next=item.qty+delta;
 
-        let area = document.getElementById("cartItems");
+  if(next<=0){
+    cart=cart.filter(x=>x.id!==id);
+  }else if(next<=p.stock){
+    item.qty=next;
+  }else{
+    alert('Quantidade maior que o estoque disponível.');
+  }
 
-        if(carrinho.length === 0) {
-            area.innerHTML = "<p>Seu carrinho está vazio.</p>";
-        } else {
+  saveData();
+  renderCart();
+}
 
-            area.innerHTML = "";
+function renderCart(){
+  let total=0;
+  let count=0;
 
-            carrinho.forEach((item, index) => {
+  const validCart=cart.filter(item=>products.some(p=>p.id===item.id));
+  cart=validCart;
 
-                area.innerHTML += `
-                    <div class="cart-item">
-                        <span>${item.nome}</span>
-                        <strong>R$ ${item.preco.toFixed(2)}</strong>
-                    </div>
-                `;
+  $('cartItems').innerHTML=cart.length
+    ? cart.map(item=>{
+      const p=products.find(x=>x.id===item.id);
+      if(!p)return '';
 
-            });
-        }
+      total+=p.price*item.qty;
+      count+=item.qty;
 
-        let total = carrinho.reduce((soma, item) => soma + item.preco, 0);
+      return `
+        <div class="product" style="margin-bottom:12px">
+          <strong>${escapeHTML(p.name)}</strong>
+          <p>${money(p.price)} cada</p>
+          <button onclick="changeQty(${p.id},-1)">−</button>
+          <strong>${item.qty}</strong>
+          <button onclick="changeQty(${p.id},1)">+</button>
+          <p>Subtotal: ${money(p.price*item.qty)}</p>
+        </div>
+      `;
+    }).join('')
+    : '<p>Seu carrinho está vazio.</p>';
 
-        document.getElementById("total").innerText = total.toFixed(2);
-    }
+  $('cartTotal').textContent='Total: '+money(total);
+  $('cartCount').textContent=count;
+}
 
+function checkout(){
+  if(!cart.length){
+    alert('Seu carrinho está vazio.');
+    return;
+  }
 
-    function abrirCarrinho() {
-        document.getElementById("cartPanel").classList.add("active");
-    }
+  if(!WHATSAPP){
+    alert('Configure o número do WhatsApp no código antes de receber pedidos.');
+    return;
+  }
 
+  const name=$('customerName').value.trim();
+  const address=$('customerAddress').value.trim();
+  const notes=$('customerNotes').value.trim();
 
-    function fecharCarrinho() {
-        document.getElementById("cartPanel").classList.remove("active");
-    }
+  let message='Olá! Quero fazer um pedido na Vendix.\\n\\n';
+  message+='Nome: '+(name||'Não informado')+'\\n';
+  message+='Endereço: '+(address||'Não informado')+'\\n\\n';
+  message+='*Meu pedido:*\\n';
 
+  let total=0;
 
-    function finalizar() {
+  for(const item of cart){
+    const p=products.find(x=>x.id===item.id);
+    if(!p)continue;
 
-        if(carrinho.length === 0) {
-            alert("Seu carrinho está vazio!");
-            return;
-        }
+    message+=`${item.qty}x ${p.name} — ${money(p.price*item.qty)}\\n`;
+    total+=p.price*item.qty;
+  }
 
-        alert(
-            "Pedido criado com sucesso!\\n\\n" +
-            "Este exemplo ainda não possui um sistema real de pagamento."
-        );
-    }
+  message+='\\nTotal: '+money(total);
 
+  if(notes)message+='\\nObservações: '+notes;
 
-    function filtrar(tipo) {
+  window.open(
+    'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(message),
+    '_blank'
+  );
+}
 
-        let pets = document.querySelectorAll(".pet");
-
-        pets.forEach(pet => {
-
-            if(tipo === "todos" || pet.dataset.rarity === tipo) {
-                pet.style.display = "block";
-            } else {
-                pet.style.display = "none";
-            }
-
-        });
-    }
-
-
-    function abrirChat() {
-
-        let chat = document.getElementById("chat");
-
-        if(chat.style.display === "block") {
-            chat.style.display = "none";
-        } else {
-            chat.style.display = "block";
-        }
-
-    }
-
-
-    function enviarMensagem() {
-
-        let input = document.getElementById("chatInput");
-        let texto = input.value.trim();
-
-        if(texto === "") return;
-
-        let body = document.getElementById("chatBody");
-
-        body.innerHTML += `
-            <div class="message">
-                Você: ${texto}
-            </div>
-        `;
-
-        let resposta = responder(texto.toLowerCase());
-
-        body.innerHTML += `
-            <div class="message">
-                🤖 Assistente: ${resposta}
-            </div>
-        `;
-
-        input.value = "";
-
-        body.scrollTop = body.scrollHeight;
-    }
-
-
-    function responder(texto) {
-
-        if(texto.includes("preço") || texto.includes("preco")) {
-            return "Temos pets a partir de R$ 1,00. O Pet Comum custa R$ 1,00, o Raro R$ 10,00, o Épico R$ 20,00 e o Lendário R$ 35,00.";
-        }
-
-        if(texto.includes("barato")) {
-            return "O Pet Comum é a opção mais barata, custando R$ 1,00.";
-        }
-
-        if(texto.includes("lendário") || texto.includes("lendario")) {
-            return "O Pet Lendário custa R$ 35,00 e possui multiplicador de exemplo de 10x.";
-        }
-
-        if(texto.includes("raro")) {
-            return "O Pet Raro custa R$ 10,00 e possui multiplicador de exemplo de 2x.";
-        }
-
-        if(texto.includes("épico") || texto.includes("epico")) {
-            return "O Pet Épico custa R$ 20,00 e possui multiplicador de exemplo de 5x.";
-        }
-
-        if(texto.includes("comprar")) {
-            return "Escolha um pet no catálogo e clique no botão Comprar para adicioná-lo ao carrinho.";
-        }
-
-        return "Posso ajudar com preços, pets, raridades e informações sobre como comprar.";
-    }
-
+renderProducts();
+renderAdmin();
+renderCart();
 </script>
 
 </body>
